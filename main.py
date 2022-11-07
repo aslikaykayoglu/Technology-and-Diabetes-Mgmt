@@ -10,7 +10,10 @@ import matplotlib.pyplot as plt
 import sys
 
 plt.close('all')
-data = pd.read_csv("DMMSR_Dataset/adolecents/adolescent#001", delimiter=',', header=0)
+data = pd.read_csv("DMMSR_Dataset/adolecents/adolescent#001.csv", delimiter=',', header=0)
+# data = pd.read_csv("DMMSR_Dataset/adults/adult#001.csv", delimiter=',', header=0)
+# data = pd.read_csv("DMMSR_Dataset/children/child#001.csv", delimiter=',', header=0)
+
 
 # Read out data in arrays
 time = data['minutesPastSimStart']      # Time points [min]
@@ -32,3 +35,21 @@ plt.legend()
 plt.xlabel('time [min]')
 plt.ylabel('Glucose level')
 plt.grid()
+plt.show()
+
+
+fig2 = plt.figure()
+for i in range(1, 10):
+    data = pd.read_csv("DMMSR_Dataset/adolecents/adolescent#00" + str(i) + ".csv", delimiter=',', header=0)
+
+    # Read out data in arrays
+    time = data['minutesPastSimStart']  # Time points [min]
+    BW = data['BW']  # Body weight data
+    CGM = data['cgm']  # CGM data
+
+    # Visualization of the data
+    plt.subplot(10, 1, i)
+    # fig2.suptitle('Visualization of the data')
+    plt.plot(time, CGM, label='CGM')
+
+plt.show()
