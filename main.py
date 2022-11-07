@@ -2,15 +2,33 @@
 
 # Press Umschalt+F10 to execute it or replace it with your code.
 # Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
-
-
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Strg+F8 to toggle the breakpoint.
-
-
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
-
 # See PyCharm help at https://www.jetbrains.com/help/pycharm/
+
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import sys
+
+plt.close('all')
+data = pd.read_csv("DMMSR_Dataset/adolecents/adolescent#001", delimiter=',', header=0)
+
+# Read out data in arrays
+time = data['minutesPastSimStart']      # Time points [min]
+BW = data['BW']                         # Body weight data
+CGM = data['cgm']                       # CGM data
+
+# Visualization of the data
+fig1 = plt.figure()
+plt.subplot(211)
+fig1.suptitle('Visualization of the data', fontsize=16)
+plt.plot(time, BW, label = 'Body weight')
+plt.legend()
+plt.xlabel('time [s]')
+plt.ylabel('Body weight [kg]')
+plt.grid()
+plt.subplot(212)
+plt.plot(time, CGM, label = 'CGM')
+plt.legend()
+plt.xlabel('time [min]')
+plt.ylabel('Glucose level')
+plt.grid()
