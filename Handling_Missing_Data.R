@@ -60,7 +60,18 @@ ggplot_na_imputations(x_cgm, imp_locf, cgm_data[1:data_len])
 
 
 # Evaluation: Mean absolute error
-Error_kalman = (1/data_len) * sum(abs(cgm_data[1:data_len]-imp))
-Error_inp_L = (1/data_len) * sum(abs(cgm_data[1:data_len]-imp_interpol_L))
-Error_inp_S = (1/data_len) * sum(abs(cgm_data[1:data_len]-imp_interpol_S))
-Error_inp_locf = (1/data_len) * sum(abs(cgm_data[1:data_len]-imp_locf))
+ma_error_kalman = (1/data_len) * sum(abs(cgm_data[1:data_len]-imp))
+ma_error_inp_L = (1/data_len) * sum(abs(cgm_data[1:data_len]-imp_interpol_L))
+ma_error_inp_S = (1/data_len) * sum(abs(cgm_data[1:data_len]-imp_interpol_S))
+ma_error_inp_locf = (1/data_len) * sum(abs(cgm_data[1:data_len]-imp_locf))
+
+# Evaluation: RMSE
+rmse_error_kalman = sqrt(mean(cgm_data[1:data_len]-imp)^2)
+rmse_error_inp_L = sqrt(mean(cgm_data[1:data_len]-imp_interpol_L)^2)
+rmse_error_inp_S = sqrt(mean(cgm_data[1:data_len]-imp_interpol_S)^2)
+rmse_error_inp_locf = sqrt(mean(cgm_data[1:data_len]-imp_locf)^2)
+
+
+
+
+
