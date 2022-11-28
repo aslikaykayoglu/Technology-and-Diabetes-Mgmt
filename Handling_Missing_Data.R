@@ -58,21 +58,24 @@ ggplot_na_imputations(x_cgm, imp_interpol_S, cgm_data[1:data_len])
 imp_locf <- na_locf(x_cgm, option = "locf")
 ggplot_na_imputations(x_cgm, imp_locf, cgm_data[1:data_len])
 
-
-# Evaluation: Mean absolute error
+## Evaluation:
+# Mean absolute error
 ma_error_kalman = (1/data_len) * sum(abs(cgm_data[1:data_len]-imp))
 ma_error_inp_L = (1/data_len) * sum(abs(cgm_data[1:data_len]-imp_interpol_L))
 ma_error_inp_S = (1/data_len) * sum(abs(cgm_data[1:data_len]-imp_interpol_S))
 ma_error_inp_locf = (1/data_len) * sum(abs(cgm_data[1:data_len]-imp_locf))
 
-# Evaluation: RMSE
+# RMSE
 rmse_error_kalman = sqrt(mean(cgm_data[1:data_len]-imp)^2)
 rmse_error_inp_L = sqrt(mean(cgm_data[1:data_len]-imp_interpol_L)^2)
 rmse_error_inp_S = sqrt(mean(cgm_data[1:data_len]-imp_interpol_S)^2)
 rmse_error_inp_locf = sqrt(mean(cgm_data[1:data_len]-imp_locf)^2)
 
-# Evaluation: Pearson Correlation
-
+# Pearson Correlation
+corr_kalman <- cor(cgm_data[1:data_len], imp, method = 'pearson')
+corr_inp_L <- cor(cgm_data[1:data_len], imp_interpol_L, method = 'pearson')
+corr_inp_S <- cor(cgm_data[1:data_len], imp_interpol_S, method = 'pearson')
+corr_inp_locf <- cor(cgm_data[1:data_len], imp_locf, method = 'pearson')
 
 
 
