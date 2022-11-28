@@ -71,6 +71,7 @@ rmse_error_inp_L = sqrt(mean(cgm_data[1:data_len]-imp_interpol_L)^2)
 rmse_error_inp_S = sqrt(mean(cgm_data[1:data_len]-imp_interpol_S)^2)
 rmse_error_inp_locf = sqrt(mean(cgm_data[1:data_len]-imp_locf)^2)
 
+# Evaluation: Pearson Correlation
 
 
 
