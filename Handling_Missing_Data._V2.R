@@ -66,7 +66,6 @@ ggplot_na_imputations(x_cgm, imp_locf, cgm_data[1:data_len])
 imp_mean <- na_mean(x_cgm, option = "mean")
 ggplot_na_imputations(x_cgm, imp_mean, cgm_data[1:data_len])
 
-
 # Evaluation: Mean absolute error
 Error_kalman = (1/data_len) * sum(abs(cgm_data[1:data_len]-imp))
 Error_inp_L = (1/data_len) * sum(abs(cgm_data[1:data_len]-imp_interpol_L))
@@ -87,3 +86,5 @@ corr_inp_L <- cor(cgm_data[1:data_len], imp_interpol_L, method = 'pearson')
 corr_inp_S <- cor(cgm_data[1:data_len], imp_interpol_S, method = 'pearson')
 corr_inp_locf <- cor(cgm_data[1:data_len], imp_locf, method = 'pearson')
 corr_inp_mean <- cor(cgm_data[1:data_len], imp_mean, method = 'pearson')
+
+
