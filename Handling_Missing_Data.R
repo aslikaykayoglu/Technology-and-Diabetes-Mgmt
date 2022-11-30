@@ -43,14 +43,11 @@ while (i<=n){
 
 imp <- na_kalman(x_cgm)
 ggplot_na_imputations(x_cgm, imp, cgm_data[1:data_len])
-#ggplot_na_distribution(x_cgm)
 
 ggplot_na_distribution2(x_cgm)
 ggplot_na_gapsize(x_cgm)
 
-#x_cgm.imp <- na_mean(x_cgm)
 # Step 2: Visualize the imputed values in the time series
-#ggplot_na_imputations(x_cgm, x_cgm.imp)
 
 ## Different Methods:
 # Interpolation Linear

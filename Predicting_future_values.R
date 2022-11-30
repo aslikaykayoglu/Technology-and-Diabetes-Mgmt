@@ -9,7 +9,7 @@ patient <- paste("DMMSR_Dataset/adolecents/adolescent#0", r.patient, ".csv")
 ado_data<-read.csv("DMMSR_Dataset/adolecents/adolescent#001.csv",header=TRUE,sep=",") 
 cgm_data <- ado_data$cgm
 
-x_cgm <- ts(cgm_data[300:length(cgm_data)], frequency = 1500)
+x_cgm <- ts(cgm_data, frequency = 1500)
 #x_cgm <- ts(cgm_data[300:(length(cgm_data)/2)], frequency = 1500)
 
 autoplot(x_cgm)
