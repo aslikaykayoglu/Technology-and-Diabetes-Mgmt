@@ -1,16 +1,16 @@
-#rm(list = ls(all.names = TRUE))
+rm(list = ls(all.names = TRUE))
 
 library(imputeTS)
 
 # Pick a random patient of one age group
 patient_numbers <- c('01','02','03','04','05','06','07','08','09','10')
 r.patient <- sample(patient_numbers,1)
-patient <- paste("DMMSR_Dataset/adolecents/adolescent#0", r.patient, ".csv")
-ado_data<-read.csv("DMMSR_Dataset/adolecents/adolescent#001.csv",header=TRUE,sep=",") 
+patient <- paste("DMMSR_Dataset/adolecents/adolescent#0", r.patient, ".csv",sep = "")
+ado_data<-read.csv(patient,header=TRUE,sep=",")  
 cgm_data <- ado_data$cgm
 
 #Used length of the data
-data_len <- round(length(cgm_data)/32)
+data_len <- round(length(cgm_data)/16)
 
 #time series
 x_cgm <- cgm_data[1:data_len]
@@ -27,7 +27,7 @@ seq_min <- round(0.03*data_len)
 seq = c(seq_min:seq_max)
 n <- sample(seq, 1)
 
-len <- c(1,6,12,24,48)
+len <- c(5,30,60,120,240)
 i <- 0
 x <- c(1:data_len) 
 
@@ -41,15 +41,17 @@ while (i<=n){
 }
 
 
-imp <- na_kalman(x_cgm)
+# Step 2: Visualize the imputed values in the time series
+
+## Different Methods:
+
+# Kalman filter
+imp <- na_kalman(x_cgm, type="level")
 ggplot_na_imputations(x_cgm, imp, cgm_data[1:data_len])
 
 ggplot_na_distribution2(x_cgm)
 ggplot_na_gapsize(x_cgm)
 
-# Step 2: Visualize the imputed values in the time series
-
-## Different Methods:
 # Interpolation Linear
 imp_interpol_L <- na_interpolation(x_cgm, option = "linear")
 ggplot_na_imputations(x_cgm, imp_interpol_L, cgm_data[1:data_len])
@@ -68,23 +70,23 @@ ggplot_na_imputations(x_cgm, imp_mean, cgm_data[1:data_len])
 
 # Evaluation: Mean absolute error
 Error_kalman = (1/data_len) * sum(abs(cgm_data[1:data_len]-imp))
-Error_inp_L = (1/data_len) * sum(abs(cgm_data[1:data_len]-imp_interpol_L))
-Error_inp_S = (1/data_len) * sum(abs(cgm_data[1:data_len]-imp_interpol_S))
-Error_inp_locf = (1/data_len) * sum(abs(cgm_data[1:data_len]-imp_locf))
-Error_inp_mean = (1/data_len) * sum(abs(cgm_data[1:data_len]-imp_mean))
+Error_L = (1/data_len) * sum(abs(cgm_data[1:data_len]-imp_interpol_L))
+Error_S = (1/data_len) * sum(abs(cgm_data[1:data_len]-imp_interpol_S))
+Error_locf = (1/data_len) * sum(abs(cgm_data[1:data_len]-imp_locf))
+Error_mean = (1/data_len) * sum(abs(cgm_data[1:data_len]-imp_mean))
 
 # RMSE
 rmse_error_kalman = sqrt(mean(cgm_data[1:data_len]-imp)^2)
-rmse_error_inp_L = sqrt(mean(cgm_data[1:data_len]-imp_interpol_L)^2)
-rmse_error_inp_S = sqrt(mean(cgm_data[1:data_len]-imp_interpol_S)^2)
-rmse_error_inp_locf = sqrt(mean(cgm_data[1:data_len]-imp_locf)^2)
-rmse_error_inp_mean = sqrt(mean(cgm_data[1:data_len]-imp_mean)^2)
+rmse_error_L = sqrt(mean(cgm_data[1:data_len]-imp_interpol_L)^2)
+rmse_error_S = sqrt(mean(cgm_data[1:data_len]-imp_interpol_S)^2)
+rmse_error_locf = sqrt(mean(cgm_data[1:data_len]-imp_locf)^2)
+rmse_error_mean = sqrt(mean(cgm_data[1:data_len]-imp_mean)^2)
 
 # Pearson Correlation
 corr_kalman <- cor(cgm_data[1:data_len], imp, method = 'pearson')
-corr_inp_L <- cor(cgm_data[1:data_len], imp_interpol_L, method = 'pearson')
-corr_inp_S <- cor(cgm_data[1:data_len], imp_interpol_S, method = 'pearson')
-corr_inp_locf <- cor(cgm_data[1:data_len], imp_locf, method = 'pearson')
-corr_inp_mean <- cor(cgm_data[1:data_len], imp_mean, method = 'pearson')
+corr_L <- cor(cgm_data[1:data_len], imp_interpol_L, method = 'pearson')
+corr_S <- cor(cgm_data[1:data_len], imp_interpol_S, method = 'pearson')
+corr_locf <- cor(cgm_data[1:data_len], imp_locf, method = 'pearson')
+corr_mean <- cor(cgm_data[1:data_len], imp_mean, method = 'pearson')
 
 
