@@ -46,7 +46,7 @@ while (i<=n){
 ## Different Methods:
 
 # Kalman filter
-imp <- na_kalman(x_cgm, type="level")
+imp <- na_kalman(x_cgm)
 ggplot_na_imputations(x_cgm, imp, cgm_data[1:data_len])
 
 ggplot_na_distribution2(x_cgm)

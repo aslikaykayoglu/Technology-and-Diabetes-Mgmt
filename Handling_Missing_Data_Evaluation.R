@@ -50,7 +50,7 @@ for (t in 1:n){
   
   ## Different Methods:
   # Kalman Filter
-  imp_kalman <- na_kalman(x_cgm, type="level")
+  imp_kalman <- na_kalman(x_cgm, model = "StructTS")
   
   # Interpolation Linear
   imp_interpol_L <- na_interpolation(x_cgm, option = "linear")
