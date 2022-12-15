@@ -1,5 +1,6 @@
 # Handling Missing Data Project
 Technology-and-Diabetes-Mgmt
+![With_Gaps](https://user-images.githubusercontent.com/75546415/207821095-ccd0377d-ebe5-4817-8f73-edea6624a450.jpeg)
 
 ## Aim:
 
@@ -11,15 +12,25 @@ patients were in each of the age groups: adolescents, adults, and children. The 
 
 ## How to handle missing values?
 #### Generating Missing Values
+The sequence contains between 3% and 10% missing values. On those sequences with artificial missing values, different techniques for data imputation was implemented.
 
++ Kalman Filter
++ Linear Interpolation
++ Spline Interpolation
++ LOCF
++ Mean
 
 
 #### Evaluation of the Missing Values comparing to the Ground Truth
-
-
++ Root-Mean Square Error
++ Mean Absolute Error
++ Pearson's Correlation
 
 #### Prediction of Missing Values
-
++ ARIMA
++ ETS 
++ Random Forest 
++ Random Forest with Drift
 
 ## Conclusion
 
