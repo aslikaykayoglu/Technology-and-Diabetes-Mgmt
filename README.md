@@ -1,5 +1,5 @@
-# Technology-and-Diabetes-Mgmt
-Handling Missing Data Project
+# Handling Missing Data Project
+Technology-and-Diabetes-Mgmt
 
 ## Aim:
 
@@ -10,10 +10,18 @@ The CGM of 30 individuals with type 1 diabetes was collected for 1 month. One-th
 patients were in each of the age groups: adolescents, adults, and children. The frequency of the data is one day (1440 data points) which starts at midnight on the first day and a new data point is collected every minute. 
 
 ## How to handle missing values?
+#### Generating Missing Values
 
 
 
+#### Evaluation of the Missing Values comparing to the Ground Truth
 
+
+
+#### Prediction of Missing Values
+
+
+## Conclusion
 
 
 
