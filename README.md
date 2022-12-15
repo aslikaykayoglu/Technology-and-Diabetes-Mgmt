@@ -11,7 +11,7 @@ The CGM of 30 individuals with type 1 diabetes was collected for 1 month. One-th
 patients were in each of the age groups: adolescents, adults, and children. The frequency of the data is one day (1440 data points) which starts at midnight on the first day and a new data point is collected every minute. 
 
 ## How to handle missing values?
-#### Generating Missing Values
+1.  Generating Missing Values
 The sequence contains between 3% and 10% missing values. On those sequences with artificial missing values, different techniques for data imputation was implemented.
 
 + Kalman Filter
@@ -21,12 +21,12 @@ The sequence contains between 3% and 10% missing values. On those sequences with
 + Mean
 
 
-#### Evaluation of the Missing Values comparing to the Ground Truth
+2. Evaluation of the Missing Values comparing to the Ground Truth
 + Root-Mean Square Error
 + Mean Absolute Error
 + Pearson's Correlation
 
-#### Prediction of Missing Values
+3. Prediction of Missing Values
 + ARIMA
 + ETS 
 + Random Forest 
