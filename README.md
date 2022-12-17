@@ -29,8 +29,8 @@ The sequence contains between 3% and 10% missing values. On those sequences with
 3. Prediction of Missing Values
 + ARIMA
 + ETS 
-+ Random Forest 
-+ Random Forest with Drift
++ Random Walk
++ Random Walk with Drift
 
 ## Conclusion
 
