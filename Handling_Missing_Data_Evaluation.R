@@ -2,7 +2,7 @@ rm(list = ls(all.names = TRUE))
 
 library(imputeTS)
 
-n <- 100
+n <- 50
 Error_kalman <- Error_L <- Error_S <- Error_locf <- Error_mean <- c()
 rmse_error_kalman <- rmse_error_L <- rmse_error_S <- rmse_error_locf <- rmse_error_mean <- c()
 corr_kalman <- corr_L <- corr_S <- corr_locf <- corr_mean <- c()
@@ -25,7 +25,7 @@ for (t in 1:n){
   # Therefore, you will implement an algorithm to select random start-points where 
   # the artificial missing sequences will start. Also the length of each missing 
   # sequence should be determined randomly between the following lengths: 
-  # 1, 6, 12, 24, 48 representing 5 minutes, 30 minutes, 1 hour, 2 hours, and 4 hours 
+  # 5, 30, 60, 120, 240 representing 5 minutes, 30 minutes, 1 hour, 2 hours, and 4 hours 
   # of missing data. Make sure that your sequence contains between 3% and 10% missing values.
   
   seq_max <- round(0.1*data_len)
@@ -50,7 +50,7 @@ for (t in 1:n){
   
   ## Different Methods:
   # Kalman Filter
-  imp_kalman <- na_kalman(x_cgm, model = "StructTS")
+  imp_kalman <- na_kalman(x_cgm)
   
   # Interpolation Linear
   imp_interpol_L <- na_interpolation(x_cgm, option = "linear")
@@ -123,6 +123,7 @@ Std_corr_S = sd(corr_S)
 Std_corr_locf = sd(corr_locf)
 Std_corr_mean = sd(corr_mean)
 
+# Show Metrics in a table
 tab <- matrix(c(Mean_error_kalman, Mean_error_L, Mean_error_S, Mean_error_locf, Mean_error_mean, 
                 Std_error_kalman, Std_error_L, Std_error_S, Std_error_locf, Std_error_mean,
                 Mean_rmse_error_kalman, Mean_rmse_error_L, Mean_rmse_error_S, Mean_rmse_error_locf, Mean_rmse_error_mean,

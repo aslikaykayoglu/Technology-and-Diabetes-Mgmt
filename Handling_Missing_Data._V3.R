@@ -1,5 +1,6 @@
 rm(list = ls(all.names = TRUE))
 
+# install with install.packages("imputeTS")
 library(imputeTS)
 
 # Pick a random patient of one age group
@@ -19,11 +20,11 @@ x_cgm <- ts(x_cgm)
 # Therefore, you will implement an algorithm to select random start-points where 
 # the artificial missing sequences will start. Also the length of each missing 
 # sequence should be determined randomly between the following lengths: 
-# 1, 6, 12, 24, 48 representing 5 minutes, 30 minutes, 1 hour, 2 hours, and 4 hours 
+# 5, 30, 60, 120, 240 representing 5 minutes, 30 minutes, 1 hour, 2 hours, and 4 hours 
 # of missing data. Make sure that your sequence contains between 3% and 10% missing values.
 
 seq_max <- round(0.03*data_len)
-seq_min <- round(0.5*data_len)
+seq_min <- round(0.1*data_len)
 seq = c(seq_min:seq_max)
 n <- sample(seq, 1)
 
@@ -49,6 +50,7 @@ while (i<=n){
 imp <- na_kalman(x_cgm, model = "StructTS")
 ggplot_na_imputations(x_cgm, imp, cgm_data[1:data_len])
 
+# Visualization of the positions of the missing gaps
 ggplot_na_distribution2(x_cgm)
 ggplot_na_gapsize(x_cgm)
 
@@ -89,6 +91,7 @@ corr_S <- cor(cgm_data[1:data_len], imp_interpol_S, method = 'pearson')
 corr_locf <- cor(cgm_data[1:data_len], imp_locf, method = 'pearson')
 corr_mean <- cor(cgm_data[1:data_len], imp_mean, method = 'pearson')
 
+# Show Metrics in a table
 tab <- matrix(c(Error_kalman, Error_L, Error_S, Error_locf, Error_mean, 
                 rmse_error_kalman, rmse_error_L, rmse_error_S, rmse_error_locf, rmse_error_mean,
                 corr_kalman, corr_L, corr_S, corr_locf, corr_mean), ncol=5, byrow=TRUE)

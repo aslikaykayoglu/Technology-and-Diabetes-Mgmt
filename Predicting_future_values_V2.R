@@ -1,5 +1,6 @@
 rm(list = ls(all.names = TRUE))
 
+# install with install.packages("forecast")
 library(forecast)
 
 # Read data
