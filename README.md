@@ -32,7 +32,7 @@ The sequence contains between 3% and 10% missing values. On those sequences with
 + Random Walk
 
 ## Conclusion
-CGM has made impressive scientific progress in the world of diabetes and offers benefits to diabetics. The use of CGM is expected to increase due to the prognosis of diabetic patients. Advances in device accuracy will be critical for CGM to gain wider use for insulin dosing adjustment in clinical practice. 
+CGM has made impressive scientific progress in the diabetes world  and offers benefits to diabetics. The use of CGM is expected to increase due to the prognosis of diabetic patients. Advances in device accuracy will be critical for CGM to gain wider use for insulin dosing adjustment in clinical practice. 
 
 
 
