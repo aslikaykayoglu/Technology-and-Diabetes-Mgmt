@@ -72,11 +72,11 @@ for (t in 1:n){
   Error_mean[t] = (1/data_len) * sum(abs(cgm_data[1:data_len]-imp_mean))
   
   # RMSE
-  rmse_error_kalman[t] = sqrt(mean(cgm_data[1:data_len]-imp_kalman)^2)
-  rmse_error_L[t] = sqrt(mean(cgm_data[1:data_len]-imp_interpol_L)^2)
-  rmse_error_S[t] = sqrt(mean(cgm_data[1:data_len]-imp_interpol_S)^2)
-  rmse_error_locf[t] = sqrt(mean(cgm_data[1:data_len]-imp_locf)^2)
-  rmse_error_mean[t] = sqrt(mean(cgm_data[1:data_len]-imp_mean)^2)
+  rmse_error_kalman[t] = sqrt(mean((cgm_data[1:data_len]-imp_kalman)^2))
+  rmse_error_L[t] = sqrt(mean((cgm_data[1:data_len]-imp_interpol_L)^2))
+  rmse_error_S[t] = sqrt(mean((cgm_data[1:data_len]-imp_interpol_S)^2))
+  rmse_error_locf[t] = sqrt(mean((cgm_data[1:data_len]-imp_locf)^2))
+  rmse_error_mean[t] = sqrt(mean((cgm_data[1:data_len]-imp_mean)^2))
   
   # Pearson Correlation
   corr_kalman[t] <- cor(cgm_data[1:data_len], imp_kalman, method = 'pearson')
